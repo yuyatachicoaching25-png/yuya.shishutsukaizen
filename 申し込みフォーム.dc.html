@@ -17,6 +17,8 @@
       font-family:'Zen Kaku Gothic New', sans-serif;
     }
     input::placeholder, textarea::placeholder { color:#B3A692; }
+    header a { color:#3A332C !important; text-decoration:none !important; }
+    header { backdrop-filter:none !important; }
     @keyframes pageFadeIn { from { opacity:0; } to { opacity:1; } }
   </style>
 </helmet>
@@ -43,7 +45,7 @@
 
   <sc-if value="{{notSubmitted}}" hint-placeholder-val="{{ true }}">
     <div style="position:relative; overflow:hidden; text-align:center; padding:64px 24px; min-height:280px; display:flex; align-items:center; justify-content:center;">
-      <div style="position:absolute; inset:0; background-image:url('./assets/form-hero.jpg'); background-size:cover; background-position:center 70%; z-index:0;"></div>
+      <div style="position:absolute; inset:0; background-image:url('./assets/form-hero-opt.jpg'); background-size:cover; background-position:center 70%; z-index:0;"></div>
       <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(30,26,20,0.3) 0%, rgba(30,26,20,0.42) 100%); z-index:1;"></div>
       <div style="position:relative; z-index:2; max-width:560px;">
         <h1 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:30px; margin:0 0 16px; color:#fff; text-wrap:pretty;">無料個別相談のお申し込み</h1>
