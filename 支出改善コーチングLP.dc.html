@@ -63,17 +63,18 @@
   <div id="header-spacer" style="height:80px;"></div>
 
   <!-- HERO -->
-  <section data-screen-label="表紙" style="position:relative; overflow:hidden; min-height:760px; display:flex; align-items:center;">
-    <div style="position:absolute; inset:0; z-index:0; overflow:hidden;"><img src="./assets/slot-hero-photo.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-    <div style="position:absolute; inset:0; z-index:1; background:linear-gradient(100deg, rgba(30,26,20,0.5) 0%, rgba(30,26,20,0.38) 45%, rgba(30,26,20,0.22) 100%);"></div>
-
-    <div style="position:relative; z-index:2; max-width:1120px; width:100%; margin:0 auto; padding:80px 24px; display:flex; justify-content:center;">
-      <div style="max-width:720px; text-align:left; animation: fadeUp 1s ease both;">
-        
-        <p style="font-size:clamp(16px, 3vw, 21px); color:#F3EEE2; margin:0 0 28px; text-wrap:pretty;">節約も貯金もしてる。<br>でも"なんだか満たされない"あなたへ。</p>
-        <h1 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(30px, 7vw, 54px); line-height:1.5; color:#fff; margin:0 0 36px; text-wrap:pretty;">自分らしい支出で、<br>心豊かな生き方を。<br></h1>
-        <a href="./申し込みフォーム.dc.html" style="display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.4); font-weight:700; font-size:19px; padding:22px 48px; border-radius:100px; text-decoration:none; box-shadow:0 12px 30px -10px rgba(0,0,0,0.45); letter-spacing:0.05em; transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); color:#fff; transform:scale(1.05); box-shadow:0 16px 36px -8px rgba(0,0,0,0.55);">無料個別相談を予約する</a>
-        <p style="margin: 18px 0 0; font-size: clamp(14px, 2.6vw, 20px); color: #E8E1D2"><b>✔︎支出の悩みや課題の整理<br>✔︎オンライン　✔︎所要時間30分</b></p>
+  <section data-screen-label="表紙" style="position:relative; padding:48px 24px 64px; background:var(--bg);">
+    <div style="max-width:880px; width:100%; margin:0 auto; display:flex; align-items:center; gap:24px; flex-wrap:wrap-reverse; justify-content:center;">
+      <div style="flex:1 1 420px; min-width:280px; max-width:600px; text-align:left; animation: fadeUp 1s ease both;">
+        <p style="font-size:clamp(16px, 3vw, 21px); color:var(--text-soft); margin:0 0 28px; text-wrap:pretty;">節約も貯金もしてる。<br>でも"なんだか満たされない"あなたへ。</p>
+        <h1 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(30px, 6vw, 48px); line-height:1.5; color:var(--text); margin:0 0 36px; text-wrap:pretty;">自分らしい支出で、<br>心豊かな生き方を。<br></h1>
+        <a href="./申し込みフォーム.dc.html" style="display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.25); font-weight:700; font-size:19px; padding:22px 48px; border-radius:100px; text-decoration:none; box-shadow:0 12px 30px -10px rgba(58,51,44,0.35); letter-spacing:0.05em; transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); color:#fff; transform:scale(1.05); box-shadow:0 16px 36px -8px rgba(58,51,44,0.4);">無料個別相談を予約する</a>
+        <p style="margin: 18px 0 0; font-size: clamp(14px, 2.6vw, 20px); color: var(--text-soft);"><b>✔︎支出の悩みや課題の整理<br>✔︎オンライン　✔︎所要時間30分</b></p>
+      </div>
+      <div style="flex:1 1 340px; min-width:260px; max-width:440px;">
+        <div style="width:100%; aspect-ratio:4/5; border-radius:28px; overflow:hidden; box-shadow:0 24px 50px -20px rgba(58,51,44,0.3);">
+          <img src="./assets/slot-hero-photo.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
       </div>
     </div>
   </section>
@@ -361,10 +362,7 @@
         <sc-for list="{{testimonials}}" as="t" hint-placeholder-count="3">
           <div data-reveal="" style="opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; transition-delay:calc({{ $index }} * 90ms);">
             <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:20px; padding:28px 36px; box-shadow:0 10px 30px -18px rgba(58,51,44,0.2);">
-              <div style="flex:none; width:80px; height:80px; border-radius:50%; overflow:hidden; background:var(--bg-alt);">
-                <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{t.slotId}}" shape="rect" radius="0" placeholder="写真" style="width:100%;height:100%;" hint-size="80px,80px"></x-import>
-              </div>
-              <div style="flex:none; width:30px; text-align:center; color:var(--accent-dark); font-family:'Shippori Mincho', serif; font-weight:600; font-size:16px;">{{t.n}}</div>
+              <div style="flex:none; width:80px; height:80px; border-radius:50%; background:var(--bg-alt); display:flex; align-items:center; justify-content:center;" dangerouslySetInnerHTML="{{t.iconHtml}}"></div>
               <div style="flex:1;">
                 <p style="margin:0 0 6px; font-weight:700; font-size:17px;">{{t.name}}</p>
                 <p style="margin:0; font-size:14px; color:var(--text-soft); text-wrap:pretty;">{{t.placeholder}}</p>
@@ -568,9 +566,12 @@ class Component extends DCLogic {
   ];
 
   testimonialData = [
-    { n: '①', name: 'Aさん', placeholder: '＜Coming soon＞', slotId: 'voice-a' },
-    { n: '②', name: 'Bさん', placeholder: '＜Coming soon＞', slotId: 'voice-b' },
-    { n: '③', name: 'Cさん', placeholder: '＜Coming soon＞', slotId: 'voice-c' },
+    { name: 'Aさん', placeholder: '＜Coming soon＞',
+      iconHtml: { __html: `<svg width="26" height="28" viewBox="0 0 26 28" fill="none"><circle cx="13" cy="8" r="6.5" stroke="${this.ICON_STROKE}" stroke-width="1.7"/><path d="M2.5 27 C2.5 18.5 7 15 13 15 C19 15 23.5 18.5 23.5 27" stroke="${this.ICON_STROKE}" stroke-width="1.7" stroke-linecap="round"/></svg>` } },
+    { name: 'Bさん', placeholder: '＜Coming soon＞',
+      iconHtml: { __html: `<svg width="26" height="28" viewBox="0 0 26 28" fill="none"><circle cx="13" cy="8" r="6.5" stroke="${this.ICON_STROKE}" stroke-width="1.7"/><path d="M6.5 6 Q7.5 4.5 8.7 6" stroke="${this.ICON_STROKE}" stroke-width="1.3" stroke-linecap="round"/><path d="M17.3 6 Q18.3 4.5 19.5 6" stroke="${this.ICON_STROKE}" stroke-width="1.3" stroke-linecap="round"/><path d="M9.5 10.5 Q13 13 16.5 10.5" stroke="${this.ICON_STROKE}" stroke-width="1.3" stroke-linecap="round"/><path d="M2.5 27 C2.5 18.5 7 15 13 15 C19 15 23.5 18.5 23.5 27" stroke="${this.ICON_STROKE}" stroke-width="1.7" stroke-linecap="round"/></svg>` } },
+    { name: 'Cさん', placeholder: '＜Coming soon＞',
+      iconHtml: { __html: `<svg width="26" height="28" viewBox="0 0 26 28" fill="none"><circle cx="13" cy="7.5" r="6" stroke="${this.ICON_STROKE}" stroke-width="1.7"/><path d="M13 1.5 C10 3.5 9 6 9 8" stroke="${this.ICON_STROKE}" stroke-width="1.3" stroke-linecap="round"/><path d="M2.5 27 C2.5 18.5 7 14.5 13 14.5 C19 14.5 23.5 18.5 23.5 27" stroke="${this.ICON_STROKE}" stroke-width="1.7" stroke-linecap="round"/></svg>` } },
   ];
 
   stepData = [
