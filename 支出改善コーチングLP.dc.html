@@ -108,7 +108,7 @@
         <div style="width:100%; height:460px; border-radius:28px; overflow:hidden;">
           <div style="width:100%; height:100%;">
             
-          <img src="./assets/profile-photo.jpg" alt="プロフィール写真" style="width:100%; height:100%; object-fit:cover; object-position:35% 70%; display:block; transform:scale(1.05); transform-origin:35% 70%;"></div>
+          <img src="./assets/profile-photo-opt.jpg" alt="プロフィール写真" style="width:100%; height:100%; object-fit:cover; object-position:35% 70%; display:block; transform:scale(1.05); transform-origin:35% 70%;"></div>
         </div>
       </div>
       <div style="flex:1 1 380px; max-width:480px; text-align:left;">
@@ -143,17 +143,17 @@
             <div style="width:100%; height:220px; border-radius:14px; overflow:hidden;">
               <sc-if value="{{a.isAchievement1}}" hint-placeholder-val="{{ false }}">
                 <div style="width:100%; height:100%;">
-                  <img src="./assets/achievement-1.png" alt="貯金0円から4年で500万円" style="width:100%; height:100%; object-fit:contain; background:#fff; display:block;">
+                  <img src="./assets/achievement-1.jpg" alt="貯金0円から4年で500万円" loading="lazy" style="width:100%; height:100%; object-fit:contain; background:#fff; display:block;">
                 </div>
               </sc-if>
               <sc-if value="{{a.isAchievement2}}" hint-placeholder-val="{{ false }}">
                 <div style="width:100%; height:100%;">
-                  <img src="./assets/achievement-2.png" alt="支出月10万円でも充実した人生" style="width:100%; height:100%; object-fit:contain; background:#fff; display:block;">
+                  <img src="./assets/achievement-2.jpg" alt="支出月10万円でも充実した人生" loading="lazy" style="width:100%; height:100%; object-fit:contain; background:#fff; display:block;">
                 </div>
               </sc-if>
               <sc-if value="{{a.isAchievement3}}" hint-placeholder-val="{{ false }}">
                 <div style="width:100%; height:100%;">
-                  <img src="./assets/achievement-3.png" alt="貯金は手段。使ってさらに豊か" style="width:100%; height:100%; object-fit:contain; background:#fff; display:block;">
+                  <img src="./assets/achievement-3.jpg" alt="貯金は手段。使ってさらに豊か" loading="lazy" style="width:100%; height:100%; object-fit:contain; background:#fff; display:block;">
                 </div>
               </sc-if>
               <sc-if value="{{a.showSlot}}" hint-placeholder-val="{{ true }}">
@@ -236,16 +236,16 @@
               <p style="margin: 0 0 4px; color: var(--accent-dark); font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: 30px; letter-spacing: 0.1em">{{v.n}}</p>
               <p style="margin: 0 0 20px; font-size: 30px; font-weight: 700">{{v.text}}</p>
               <sc-if value="{{v.isValue1}}" hint-placeholder-val="{{ false }}">
-                <img src="./assets/slot-value-1.webp" alt="{{v.text}}" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
+                <img src="./assets/slot-value-1.webp" alt="{{v.text}}" loading="lazy" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
               </sc-if>
               <sc-if value="{{v.isValue2}}" hint-placeholder-val="{{ false }}">
-                <img src="./assets/slot-value-2.webp" alt="{{v.text}}" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
+                <img src="./assets/slot-value-2.webp" alt="{{v.text}}" loading="lazy" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
               </sc-if>
               <sc-if value="{{v.isValue3}}" hint-placeholder-val="{{ false }}">
-                <img src="./assets/slot-value-3.webp" alt="{{v.text}}" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
+                <img src="./assets/slot-value-3.webp" alt="{{v.text}}" loading="lazy" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
               </sc-if>
               <sc-if value="{{v.isValue4}}" hint-placeholder-val="{{ false }}">
-                <img src="./assets/slot-value-4.webp" alt="{{v.text}}" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
+                <img src="./assets/slot-value-4.webp" alt="{{v.text}}" loading="lazy" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
               </sc-if>
               <p style="margin: 0; font-size: 17px; color: var(--text-soft); text-wrap: pretty; text-align: left">{{v.sub}}</p>
             </div>
@@ -272,7 +272,7 @@
         <div style="width:100%; height:400px; border-radius:28px; overflow:hidden;">
           <div style="width:100%; height:100%;">
             
-          <img src="./3-mrd4iobu.png" alt="ユヤ" style="width:100%;height:100%; object-fit:cover; object-position:65% center; display:block;"></div>
+          <img src="./assets/trust-photo-opt.jpg" alt="ユヤ" loading="lazy" style="width:100%;height:100%; object-fit:cover; object-position:65% center; display:block;"></div>
         </div>
       </div>
     </div>
@@ -297,12 +297,12 @@
               <p style="margin:0 0 20px; font-size:15px; color:var(--text-soft); text-wrap:pretty;">{{s.desc}}</p>
               <sc-if value="{{s.isSheet1}}" hint-placeholder-val="{{ false }}">
                 <div style="background:#fff; border-radius:18px; max-width:300px; overflow:hidden; box-shadow:0 18px 40px -16px rgba(58,51,44,0.45); border:1px solid var(--line);">
-                  <img src="./assets/worksheet-sheet1.png" alt="人生振り返りワーク" style="display:block; width:100%; height:auto;">
+                  <img src="./assets/worksheet-sheet1.png" alt="人生振り返りワーク" loading="lazy" style="display:block; width:100%; height:auto;">
                 </div>
               </sc-if>
               <sc-if value="{{s.isSheet2}}" hint-placeholder-val="{{ false }}">
                 <div style="background:#fff; border-radius:18px; max-width:300px; overflow:hidden; box-shadow:0 18px 40px -16px rgba(58,51,44,0.45); border:1px solid var(--line);">
-                  <img src="./assets/worksheet-sheet2.png" alt="お金の羅針盤シート" style="display:block; width:100%; height:auto;">
+                  <img src="./assets/worksheet-sheet2.png" alt="お金の羅針盤シート" loading="lazy" style="display:block; width:100%; height:auto;">
                 </div>
               </sc-if>
               <sc-if value="{{s.hasSheet}}" hint-placeholder-val="{{ false }}">
@@ -346,13 +346,13 @@
               <p style="margin: 0 0 16px; font-weight: 700; font-size: 20px">{{pk.text}}</p>
               <div style="width:100%; height:140px; border-radius:14px; overflow:hidden; margin-bottom:16px;">
                 <sc-if value="{{pk.isPerk1}}" hint-placeholder-val="{{ false }}">
-                  <img src="./assets/slot-perk-1.webp" alt="{{pk.text}}" style="width:100%;height:100%;object-fit:cover;display:block;">
+                  <img src="./assets/slot-perk-1.webp" alt="{{pk.text}}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
                 </sc-if>
                 <sc-if value="{{pk.isPerk2}}" hint-placeholder-val="{{ false }}">
-                  <img src="./assets/slot-perk-2.webp" alt="{{pk.text}}" style="width:100%;height:100%;object-fit:cover;display:block;">
+                  <img src="./assets/slot-perk-2.webp" alt="{{pk.text}}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
                 </sc-if>
                 <sc-if value="{{pk.isPerk3}}" hint-placeholder-val="{{ false }}">
-                  <img src="./assets/slot-perk-3.webp" alt="{{pk.text}}" style="width:100%;height:100%;object-fit:cover;display:block;">
+                  <img src="./assets/slot-perk-3.webp" alt="{{pk.text}}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
                 </sc-if>
               </div>
               <p style="margin:0; font-size:13.5px; color:var(--text-soft); text-wrap:pretty; text-align:left;">{{pk.sub}}</p>
@@ -489,7 +489,7 @@
 
   <!-- Footer -->
   <footer data-reveal="" style="position:relative; overflow:hidden; color:#EDE6D8; padding:64px 24px 40px; text-align:center; opacity:0; transform:translateY(20px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);">
-    <div style="position:absolute; inset:0; background-image:url('./assets/footer-bg.jpg'); background-size:cover; background-position:center;"></div>
+    <div style="position:absolute; inset:0; background-image:url('./assets/footer-bg-opt.jpg'); background-size:cover; background-position:center;"></div>
     <div style="position:absolute; inset:0; background:rgba(30,26,20,0.45);"></div>
     <div style="position:relative; z-index:1;">
     <p style="font-family:'Shippori Mincho', serif; font-size:clamp(17px, 3vw, 22px); line-height:1.8; margin:0 auto 32px; max-width:520px; text-wrap:pretty; color:#fff;"><b>完璧に準備できていなくても大丈夫。<br>今の悩みや想いをそのまま聞かせてください。</b></p>
@@ -641,15 +641,15 @@ class Component extends DCLogic {
     const floatingCta = document.getElementById('floating-cta');
     const worriesSection = document.getElementById('nav-worries');
     if (floatingCta && worriesSection) {
-      const onScroll = () => {
-        const triggerPoint = worriesSection.getBoundingClientRect().top + window.scrollY;
-        const past = window.scrollY + window.innerHeight * 0.6 > triggerPoint;
+      const setShown = (past) => {
         floatingCta.style.opacity = past ? '1' : '0';
         floatingCta.style.transform = past ? 'translate(-50%, 0)' : 'translate(-50%, 40px)';
         floatingCta.style.pointerEvents = past ? 'auto' : 'none';
       };
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+      const ctaIo = new IntersectionObserver((entries) => {
+        entries.forEach(entry => setShown(entry.boundingClientRect.top < window.innerHeight * 0.6));
+      }, { rootMargin: `0px 0px -${Math.round(window.innerHeight * 0.4)}px 0px`, threshold: 0 });
+      ctaIo.observe(worriesSection);
     }
 
     const rootEl = document.querySelector('x-dc > div') || document.body;
