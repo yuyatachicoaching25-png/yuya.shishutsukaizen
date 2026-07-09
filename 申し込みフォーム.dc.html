@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; -webkit-font-smoothing:antialiased; }
+    input[type="text"], input[type="email"], input[type="datetime-local"], textarea {
+      font-family:'Zen Kaku Gothic New', sans-serif;
+    }
+    input::placeholder, textarea::placeholder { color:#B3A692; }
+    @keyframes pageFadeIn { from { opacity:0; } to { opacity:1; } }
+  </style>
+</helmet>
+<div style="--bg:#FBF9F4; --bg-alt:#F4EBDA; --accent:#ddbf8d; --accent-dark:#a9824f; --text:#3A332C; --text-soft:#8B7F6E; --line:#e9dfc9; background:var(--bg); color:var(--text); font-family:'Zen Kaku Gothic New', sans-serif; line-height:1.8; letter-spacing:0.02em; min-height:100vh; animation:pageFadeIn .45s ease both;">
+
+  <!-- ヘッダー -->
+  <header style="padding:18px 24px; border-bottom:1px solid var(--line); background:rgba(251,249,244,0.92); backdrop-filter:blur(8px);">
+    <div style="max-width:680px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;">
+      <a href="./支出改善コーチングLP.dc.html" style="font-family:'Shippori Mincho', serif; font-weight:700; font-size:16px; color:var(--text); text-decoration:none;">ユヤの支出改善コーチング</a>
+      <a href="./支出改善コーチングLP.dc.html" style="font-size:13px; color:var(--text-soft); text-decoration:none;">← トップに戻る</a>
+    </div>
+  </header>
+
+  <sc-if value="{{submitted}}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:560px; margin:0 auto; padding:120px 24px; text-align:center;">
+      <div style="width:64px; height:64px; border-radius:50%; background:var(--bg-alt); display:flex; align-items:center; justify-content:center; margin:0 auto 28px;">
+        <svg width="28" height="22" viewBox="0 0 28 22" fill="none"><path d="M2 11 L10 19 L26 3" stroke="#a9824f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </div>
+      <h1 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:26px; margin:0 0 20px; text-wrap:pretty;">お申し込みありがとうございます</h1>
+      <p style="font-size:15px; color:var(--text-soft); line-height:1.9; text-wrap:pretty; margin:0 0 40px;">3営業日以内を目安に yuyatachi.coaching25@gmail.com からご連絡いたします。<br>稀に迷惑メールフォルダに入っている可能性もございますので、ご確認ください。<br>もし迷惑メールにも届いていない場合は、大変お手数ですが再度ご連絡いただけますと幸いです。</p>
+      <a href="./支出改善コーチングLP.dc.html" style="display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.35); font-weight:700; font-size:15px; padding:16px 40px; border-radius:100px; text-decoration:none; transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); transform:scale(1.05);">トップページに戻る</a>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{notSubmitted}}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative; overflow:hidden; text-align:center; padding:64px 24px; min-height:280px; display:flex; align-items:center; justify-content:center;">
+      <div style="position:absolute; inset:0; background-image:url('./assets/form-hero.jpg'); background-size:cover; background-position:center 70%; z-index:0;"></div>
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(30,26,20,0.3) 0%, rgba(30,26,20,0.42) 100%); z-index:1;"></div>
+      <div style="position:relative; z-index:2; max-width:560px;">
+        <h1 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:30px; margin:0 0 16px; color:#fff; text-wrap:pretty;">無料個別相談のお申し込み</h1>
+        <p style="font-size:14.5px; color:#F3EEE2; line-height:1.9; text-wrap:pretty; margin:0;">「支出改善コーチング」にご興味を持っていただきありがとうございます。<br><span style="letter-spacing: 0.32px;">下記のお申し込みフォームを</span>ご入力ください。<br>内容を確認の上、折り返し日程調整のメールをご連絡いたします。</p>
+      </div>
+    </div>
+    <div style="max-width:640px; margin:0 auto; padding:48px 24px 100px;">
+
+      <form onSubmit="{{handleSubmit}}" style="display:flex; flex-direction:column; gap:36px;">
+
+        <h2 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:20px; margin:0; color:var(--text); text-align:center;">ーお申し込みフォーム(所要2分)ー</h2>
+
+        <!-- お名前 -->
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <label style="font-size:15px; font-weight:700;">お名前（フリガナ）</label>
+            <span style="font-size:11px; color:#fff; background:var(--accent-dark); padding:3px 10px; border-radius:100px;">必須</span>
+          </div>
+          <input type="text" value="{{name}}" onChange="{{onNameChange}}" placeholder="例）山田 太郎（ヤマダ タロウ）" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:16px; border:1.5px solid {{nameError}}; border-radius:12px; background:#fff; color:var(--text);">
+          <sc-if value="{{showNameError}}" hint-placeholder-val="{{ false }}">
+            <p style="margin:8px 0 0; font-size:12.5px; color:#C0553D;">お名前を入力してください。</p>
+          </sc-if>
+        </div>
+
+        <!-- メールアドレス -->
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <label style="font-size:15px; font-weight:700;">メールアドレス</label>
+            <span style="font-size:11px; color:#fff; background:var(--accent-dark); padding:3px 10px; border-radius:100px;">必須</span>
+          </div>
+          <input type="email" value="{{email}}" onChange="{{onEmailChange}}" placeholder="例）example@mail.com" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:16px; border:1.5px solid {{emailError}}; border-radius:12px; background:#fff; color:var(--text);">
+          <sc-if value="{{showEmailError}}" hint-placeholder-val="{{ false }}">
+            <p style="margin:8px 0 0; font-size:12.5px; color:#C0553D;">メールアドレスを入力してください。</p>
+          </sc-if>
+        </div>
+
+        <!-- メールアドレス確認 -->
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <label style="font-size:15px; font-weight:700;">メールアドレス（確認用）</label>
+            <span style="font-size:11px; color:#fff; background:var(--accent-dark); padding:3px 10px; border-radius:100px;">必須</span>
+          </div>
+          <input type="email" value="{{emailConfirm}}" onChange="{{onEmailConfirmChange}}" placeholder="もう一度入力してください" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:16px; border:1.5px solid {{emailConfirmError}}; border-radius:12px; background:#fff; color:var(--text);">
+          <sc-if value="{{showEmailConfirmError}}" hint-placeholder-val="{{ false }}">
+            <p style="margin:8px 0 0; font-size:12.5px; color:#C0553D;">{{emailConfirmErrorText}}</p>
+          </sc-if>
+        </div>
+
+        <!-- 希望日時 -->
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <label style="font-size:15px; font-weight:700;">ご相談の希望日時</label>
+            <span style="font-size:11px; color:#fff; background:var(--accent-dark); padding:3px 10px; border-radius:100px;">必須</span>
+          </div>
+          
+          <p style="font-size:12.5px; color:var(--text-soft); margin:0 0 16px; text-wrap:pretty;">第一希望〜第三希望までをご入力ください。<br>対応可能時間は<b><u>9:00〜20:00(最終スタートは19:00) で、30分単位</u></b>でご選択ください。<br>また<u><b>定休日の火曜日と水曜日以外から</b></u>ご希望ください。</p><div style="display:flex; flex-direction:column; gap:14px;">
+            <div>
+              <p style="margin:0 0 6px; font-size:13px; color:var(--text-soft);">第一希望</p>
+              <input type="datetime-local" value="{{pref1}}" onChange="{{onPref1Change}}" min="{{minDate}}" step="1800" style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:15px; border:1.5px solid {{pref1Error}}; border-radius:12px; background:#fff; color:var(--text);">
+              <sc-if value="{{showPrefError}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">第一希望の日時を入力してください。</p>
+              </sc-if>
+              <sc-if value="{{showPref1TimeError}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">受付時間は9:00〜19:00です。</p>
+              </sc-if>
+              <sc-if value="{{showPref1DayError}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">火曜日と水曜日は定休日です。</p>
+              </sc-if>
+              <sc-if value="{{showPref1AlignError}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">30分単位でご選択ください。</p>
+              </sc-if>
+            </div>
+            <div>
+              <p style="margin:0 0 6px; font-size:13px; color:var(--text-soft);">第二希望</p>
+              <input type="datetime-local" value="{{pref2}}" onChange="{{onPref2Change}}" min="{{minDate}}" step="1800" style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:15px; border:1.5px solid {{pref2Error}}; border-radius:12px; background:#fff; color:var(--text);">
+              <sc-if value="{{showPref2Error}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">第二希望の日時を入力してください。</p>
+              </sc-if>
+              <sc-if value="{{showPref2TimeError}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">受付時間は9:00〜19:00です。</p>
+              </sc-if>
+              <sc-if value="{{showPref2DayError}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">火曜日と水曜日は定休日です。</p>
+              </sc-if>
+              <sc-if value="{{showPref2AlignError}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">30分単位でご選択ください。</p>
+              </sc-if>
+            </div>
+            <div>
+              <p style="margin:0 0 6px; font-size:13px; color:var(--text-soft);">第三希望</p>
+              <input type="datetime-local" value="{{pref3}}" onChange="{{onPref3Change}}" min="{{minDate}}" step="1800" style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:15px; border:1.5px solid {{pref3Error}}; border-radius:12px; background:#fff; color:var(--text);">
+              <sc-if value="{{showPref3Error}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">第三希望の日時を入力してください。</p>
+              </sc-if>
+              <sc-if value="{{showPref3TimeError}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">受付時間は9:00〜19:00です。</p>
+              </sc-if>
+              <sc-if value="{{showPref3DayError}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">火曜日と水曜日は定休日です。</p>
+              </sc-if>
+              <sc-if value="{{showPref3AlignError}}" hint-placeholder-val="{{ false }}">
+                <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">30分単位でご選択ください。</p>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <!-- その他 -->
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <label style="font-size:15px; font-weight:700;">その他お伝えしたいこと</label>
+            <span style="font-size:11px; color:var(--text-soft); background:var(--bg-alt); padding:3px 10px; border-radius:100px;">任意</span>
+          </div>
+          <textarea value="{{message}}" onChange="{{onMessageChange}}" placeholder="ご質問やお伝えしたいことがあればご記入ください" rows="4" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:15px; border:1.5px solid var(--line); border-radius:12px; background:#fff; color:var(--text); resize:vertical;"></textarea>
+        </div>
+
+        <button type="submit" style="width:100%; box-sizing:border-box; background:var(--accent); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.35); font-weight:700; font-size:17px; padding:20px; border-radius:100px; border:none; cursor:pointer; box-shadow:0 12px 30px -10px rgba(169,130,79,0.55); transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); transform:scale(1.02);">この内容で申し込む</button>
+        <p style="text-align:center; font-size:12px; color:var(--text-soft); margin:-16px 0 0;">申し込み後、折り返しご連絡いたします。</p>
+      </form>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    name: '', email: '', emailConfirm: '',
+    pref1: '', pref2: '', pref3: '',
+    gender: '', age: '', occupation: '', prefecture: '',
+    concerns: [], concernOther: '',
+    goal: null, goalOther: '',
+    experience: null,
+    message: '',
+    submitted: false,
+    touched: false,
+  };
+
+  PREFECTURE_OPTIONS = [
+    '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県',
+    '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県',
+    '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県',
+    '岐阜県', '静岡県', '愛知県', '三重県',
+    '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県',
+    '鳥取県', '島根県', '岡山県', '広島県', '山口県',
+    '徳島県', '香川県', '愛媛県', '高知県',
+    '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', '沖縄県',
+    '海外',
+  ];
+
+  CONCERN_OPTIONS = [
+    { key: 'c1', label: '何にいくら使っているか把握できていない' },
+    { key: 'c2', label: '節約しているのに、なぜか貯まらない' },
+    { key: 'c3', label: '我慢ばかりで、お金を使うことに罪悪感がある' },
+    { key: 'c4', label: '将来のために貯めているが、"今"を楽しめていない気がする' },
+    { key: 'c5', label: '何にお金を使うと満たされるのか、自分でもよく分からない' },
+    { key: 'c6', label: '家族やパートナーとお金の価値観が合わない' },
+    { key: 'other', label: 'その他' },
+  ];
+
+  GOAL_OPTIONS = [
+    { key: 'g1', label: 'とにかく支出を減らし、貯金額を増やしたい' },
+    { key: 'g2', label: '自分のペースを大事に無理なく貯金ができるようになりたい' },
+    { key: 'g3', label: 'お金を使う基準・価値観をはっきりさせたい' },
+    { key: 'g4', label: 'お金の不安を減らして、"今"を心豊かに生きたい' },
+    { key: 'other', label: 'その他' },
+  ];
+
+  EXPERIENCE_OPTIONS = [
+    { key: 'e1', label: '初めて受ける' },
+    { key: 'e2', label: '過去にユヤのコーチングを受けたことがある' },
+    { key: 'e3', label: '過去に別のコーチでコーチングを受けたことがある' },
+  ];
+
+  toggleConcern(key) {
+    this.setState(s => {
+      const has = s.concerns.includes(key);
+      return { concerns: has ? s.concerns.filter(k => k !== key) : [...s.concerns, key] };
+    });
+  }
+
+  selectGoal(key) {
+    this.setState({ goal: key });
+  }
+
+  selectExperience(key) {
+    this.setState({ experience: key });
+  }
+
+  isTimeInRange(value) {
+    if (!value) return true;
+    const timePart = value.split('T')[1];
+    if (!timePart) return true;
+    const [h, m] = timePart.split(':').map(Number);
+    const minutes = h * 60 + m;
+    return minutes >= 9 * 60 && minutes <= 19 * 60;
+  }
+
+  isClosedDay(value) {
+    if (!value) return false;
+    const datePart = value.split('T')[0];
+    if (!datePart) return false;
+    const d = new Date(datePart + 'T00:00:00');
+    const day = d.getDay();
+    return day === 2 || day === 3;
+  }
+
+  isHalfHourAligned(value) {
+    if (!value) return true;
+    const timePart = value.split('T')[1];
+    if (!timePart) return true;
+    const [, m] = timePart.split(':').map(Number);
+    return m === 0 || m === 30;
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ touched: true });
+    const s = this.state;
+    const nameOk = s.name.trim().length > 0;
+    const emailOk = s.email.trim().length > 0;
+    const emailConfirmOk = s.emailConfirm.trim().length > 0 && s.emailConfirm === s.email;
+    const prefOk = s.pref1.trim().length > 0 && s.pref2.trim().length > 0 && s.pref3.trim().length > 0;
+    const pref1TimeOk = this.isTimeInRange(s.pref1);
+    const pref2TimeOk = this.isTimeInRange(s.pref2);
+    const pref3TimeOk = this.isTimeInRange(s.pref3);
+    const pref1DayOk = !this.isClosedDay(s.pref1);
+    const pref2DayOk = !this.isClosedDay(s.pref2);
+    const pref3DayOk = !this.isClosedDay(s.pref3);
+    const pref1AlignOk = this.isHalfHourAligned(s.pref1);
+    const pref2AlignOk = this.isHalfHourAligned(s.pref2);
+    const pref3AlignOk = this.isHalfHourAligned(s.pref3);
+    if (nameOk && emailOk && emailConfirmOk && prefOk && pref1TimeOk && pref2TimeOk && pref3TimeOk && pref1DayOk && pref2DayOk && pref3DayOk && pref1AlignOk && pref2AlignOk && pref3AlignOk) {
+      window.location.href = './申し込み完了.dc.html';
+    }
+  };
+
+  renderVals() {
+    const s = this.state;
+    const touched = s.touched;
+
+    const concernOptions = this.CONCERN_OPTIONS.map(opt => {
+      const checked = s.concerns.includes(opt.key);
+      return {
+        label: opt.label,
+        checked,
+        borderColor: checked ? '#a9824f' : '#e9dfc9',
+        bg: checked ? '#F4EBDA' : '#fff',
+        checkBorder: checked ? '#a9824f' : '#cbbfa8',
+        checkBg: checked ? '#a9824f' : '#fff',
+        onToggle: (e) => { e.preventDefault(); this.toggleConcern(opt.key); },
+      };
+    });
+
+        const goalOptions = this.GOAL_OPTIONS.map(opt => {
+      const checked = s.goal === opt.key;
+      return {
+        label: opt.label,
+        checked,
+        borderColor: checked ? '#a9824f' : '#e9dfc9',
+        bg: checked ? '#F4EBDA' : '#fff',
+        checkBorder: checked ? '#a9824f' : '#cbbfa8',
+        onSelect: (e) => { e.preventDefault(); this.selectGoal(opt.key); },
+      };
+    });
+
+    const experienceOptions = this.EXPERIENCE_OPTIONS.map(opt => {
+      const checked = s.experience === opt.key;
+      return {
+        label: opt.label,
+        checked,
+        borderColor: checked ? '#a9824f' : '#e9dfc9',
+        bg: checked ? '#F4EBDA' : '#fff',
+        checkBorder: checked ? '#a9824f' : '#cbbfa8',
+        onSelect: (e) => { e.preventDefault(); this.selectExperience(opt.key); },
+      };
+    });
+
+    const nameError = touched && !s.name.trim();
+    const emailErr = touched && !s.email.trim();
+    const emailConfirmEmpty = touched && !s.emailConfirm.trim();
+    const emailMismatch = touched && s.emailConfirm.trim() && s.emailConfirm !== s.email;
+    const prefErr = touched && !s.pref1.trim();
+    const pref2Err = touched && !s.pref2.trim();
+    const pref3Err = touched && !s.pref3.trim();
+    const pref1TimeErr = !this.isTimeInRange(s.pref1);
+    const pref2TimeErr = !this.isTimeInRange(s.pref2);
+        const pref3TimeErr = !this.isTimeInRange(s.pref3);
+    const pref1DayErr = this.isClosedDay(s.pref1);
+    const pref2DayErr = this.isClosedDay(s.pref2);
+    const pref3DayErr = this.isClosedDay(s.pref3);
+    const pref1AlignErr = !this.isHalfHourAligned(s.pref1);
+    const pref2AlignErr = !this.isHalfHourAligned(s.pref2);
+    const pref3AlignErr = !this.isHalfHourAligned(s.pref3);
+    const genderErr = touched && !s.gender.trim();
+    const ageErr = touched && !s.age.trim();
+    const occupationErr = touched && !s.occupation.trim();
+    const prefectureErr = touched && !s.prefecture.trim();
+    const experienceErr = touched && s.experience === null;
+    const concernErr = touched && s.concerns.length === 0;
+    const goalErr = touched && s.goal === null;
+
+    return {
+      name: s.name,
+      email: s.email,
+      emailConfirm: s.emailConfirm,
+      pref1: s.pref1,
+      pref2: s.pref2,
+      pref3: s.pref3,
+      gender: s.gender,
+      age: s.age,
+      occupation: s.occupation,
+      prefecture: s.prefecture,
+      prefectureOptions: this.PREFECTURE_OPTIONS,
+      minDate: new Date().toISOString().slice(0, 10) + 'T00:00',
+      concernOther: s.concernOther,
+      goalOther: s.goalOther,
+      message: s.message,
+      submitted: s.submitted,
+      notSubmitted: !s.submitted,
+      concernOptions,
+      goalOptions,
+      experienceOptions,
+      showConcernOther: s.concerns.includes('other'),
+      showGoalOther: s.goal === 'other',
+      showConcernError: concernErr,
+      showGoalError: goalErr,
+      nameError: nameError ? '#C0553D' : '#e9dfc9',
+      emailError: emailErr ? '#C0553D' : '#e9dfc9',
+      emailConfirmError: (emailConfirmEmpty || emailMismatch) ? '#C0553D' : '#e9dfc9',
+      pref1Error: (prefErr || pref1TimeErr || pref1DayErr || pref1AlignErr) ? '#C0553D' : '#e9dfc9',
+      pref2Error: (pref2Err || pref2TimeErr || pref2DayErr || pref2AlignErr) ? '#C0553D' : '#e9dfc9',
+      pref3Error: (pref3Err || pref3TimeErr || pref3DayErr || pref3AlignErr) ? '#C0553D' : '#e9dfc9',
+      showNameError: nameError,
+      showEmailError: emailErr,
+      showEmailConfirmError: emailConfirmEmpty || emailMismatch,
+      emailConfirmErrorText: emailMismatch ? 'メールアドレスが一致しません。' : 'メールアドレス（確認用）を入力してください。',
+      showPrefError: prefErr,
+      showPref2Error: pref2Err,
+      showPref3Error: pref3Err,
+      showPref1TimeError: pref1TimeErr,
+      showPref2TimeError: pref2TimeErr,
+      showPref3TimeError: pref3TimeErr,
+      showPref1DayError: pref1DayErr,
+      showPref2DayError: pref2DayErr,
+      showPref3DayError: pref3DayErr,
+      showPref1AlignError: pref1AlignErr,
+      showPref2AlignError: pref2AlignErr,
+      showPref3AlignError: pref3AlignErr,
+      genderError: genderErr ? '#C0553D' : '#e9dfc9',
+      ageError: ageErr ? '#C0553D' : '#e9dfc9',
+      occupationError: occupationErr ? '#C0553D' : '#e9dfc9',
+      prefectureError: prefectureErr ? '#C0553D' : '#e9dfc9',
+      showGenderError: genderErr,
+      showAgeError: ageErr,
+      showOccupationError: occupationErr,
+      showPrefectureError: prefectureErr,
+      showExperienceError: experienceErr,
+      onNameChange: (e) => this.setState({ name: e.target.value }),
+      onEmailChange: (e) => this.setState({ email: e.target.value }),
+      onEmailConfirmChange: (e) => this.setState({ emailConfirm: e.target.value }),
+      onPref1Change: (e) => this.setState({ pref1: e.target.value }),
+      onPref2Change: (e) => this.setState({ pref2: e.target.value }),
+      onPref3Change: (e) => this.setState({ pref3: e.target.value }),
+      onGenderChange: (e) => this.setState({ gender: e.target.value }),
+      onAgeChange: (e) => this.setState({ age: e.target.value }),
+      onOccupationChange: (e) => this.setState({ occupation: e.target.value }),
+      onPrefectureChange: (e) => this.setState({ prefecture: e.target.value }),
+      onConcernOtherChange: (e) => this.setState({ concernOther: e.target.value }),
+      onGoalOtherChange: (e) => this.setState({ goalOther: e.target.value }),
+      onMessageChange: (e) => this.setState({ message: e.target.value }),
+      handleSubmit: this.handleSubmit,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
