@@ -108,7 +108,7 @@
         <div style="width:100%; height:460px; border-radius:28px; overflow:hidden;">
           <div style="width:100%; height:100%;">
             
-          <img src="./assets/profile-photo-opt.jpg" alt="プロフィール写真" style="width:100%; height:100%; object-fit:cover; object-position:35% 70%; display:block; transform:scale(1.05); transform-origin:35% 70%;"></div>
+          <img src="./assets/profile-photo-v2.jpg" alt="プロフィール写真" style="width:100%; height:100%; object-fit:cover; object-position:35% 70%; display:block; transform:scale(1.05); transform-origin:35% 70%;"></div>
         </div>
       </div>
       <div style="flex:1 1 380px; max-width:480px; text-align:left;">
@@ -208,7 +208,7 @@
       <div style="flex:1 1 320px; max-width:400px;">
         <div style="width:100%; height:360px; border-radius:28px; overflow:hidden;">
           <div style="width:100%; height:100%;">
-            <img src="./stockcake---1818260-medium-mrd4w1bf.jpg" alt="支出改善コーチングとは" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <img src="./assets/about-photo-v2.jpg" alt="支出改善コーチングとは" style="width:100%; height:100%; object-fit:cover; display:block;">
           </div>
         </div>
       </div>
@@ -235,18 +235,7 @@
             <div style="background:#fff; border-radius:20px; padding:32px; box-shadow:0 10px 30px -18px rgba(58,51,44,0.25); text-align:center;">
               <p style="margin: 0 0 4px; color: var(--accent-dark); font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: 30px; letter-spacing: 0.1em">{{v.n}}</p>
               <p style="margin: 0 0 20px; font-size: 30px; font-weight: 700">{{v.text}}</p>
-              <sc-if value="{{v.isValue1}}" hint-placeholder-val="{{ false }}">
-                <img src="./assets/slot-value-1.webp" alt="{{v.text}}" loading="lazy" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
-              </sc-if>
-              <sc-if value="{{v.isValue2}}" hint-placeholder-val="{{ false }}">
-                <img src="./assets/slot-value-2.webp" alt="{{v.text}}" loading="lazy" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
-              </sc-if>
-              <sc-if value="{{v.isValue3}}" hint-placeholder-val="{{ false }}">
-                <img src="./assets/slot-value-3.webp" alt="{{v.text}}" loading="lazy" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
-              </sc-if>
-              <sc-if value="{{v.isValue4}}" hint-placeholder-val="{{ false }}">
-                <img src="./assets/slot-value-4.webp" alt="{{v.text}}" loading="lazy" style="width:100%; height:220px; object-fit:cover; border-radius:16px; margin-bottom:20px; display:block;">
-              </sc-if>
+              <div style="width:72px; height:72px; border-radius:50%; background:var(--bg-alt); display:flex; align-items:center; justify-content:center; margin:0 auto 24px;" dangerouslySetInnerHTML="{{v.iconHtml}}"></div>
               <p style="margin: 0; font-size: 17px; color: var(--text-soft); text-wrap: pretty; text-align: left">{{v.sub}}</p>
             </div>
           </div>
