@@ -1,5 +1,6 @@
+const nodemailer = require('nodemailer');
+
 const TARGET_FORM_NAME = '申し込みフォーム';
-const RESEND_FROM = 'onboarding@resend.dev';
 
 function formatDateTime(value) {
   if (!value) return '未入力';
@@ -51,25 +52,20 @@ exports.handler = async (event) => {
       return { statusCode: 200, body: 'skipped: no recipient email' };
     }
 
-    const resendRes = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
       },
-      body: JSON.stringify({
-        from: RESEND_FROM,
-        to: toEmail,
-        subject: '【支出改善コーチング】お申し込みありがとうございます',
-        text: buildEmailBody(data),
-      }),
     });
 
-    if (!resendRes.ok) {
-      const errText = await resendRes.text();
-      console.error('submission-created: Resend API error', resendRes.status, errText);
-      return { statusCode: 200, body: 'resend error logged' };
-    }
+    await transporter.sendMail({
+      from: `"ユヤの支出改善コーチング" <${process.env.GMAIL_USER}>`,
+      to: toEmail,
+      subject: '【支出改善コーチング】お申し込みありがとうございます',
+      text: buildEmailBody(data),
+    });
 
     return { statusCode: 200, body: 'confirmation email sent' };
   } catch (err) {
