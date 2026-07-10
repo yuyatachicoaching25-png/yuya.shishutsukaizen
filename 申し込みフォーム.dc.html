@@ -55,7 +55,8 @@
     </div>
     <div style="max-width:640px; margin:0 auto; padding:48px 24px 100px;">
 
-      <form onSubmit="{{handleSubmit}}" style="display:flex; flex-direction:column; gap:36px;">
+      <form name="申し込みフォーム" method="POST" data-netlify="true" onSubmit="{{handleSubmit}}" style="display:flex; flex-direction:column; gap:36px;">
+        <input type="hidden" name="form-name" value="申し込みフォーム">
 
         <h2 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:20px; margin:0; color:var(--text); text-align:center;">ーお申し込みフォーム(所要2分)ー</h2>
 
@@ -65,7 +66,7 @@
             <label style="font-size:15px; font-weight:700;">お名前（フリガナ）</label>
             <span style="font-size:11px; color:#fff; background:var(--accent-dark); padding:3px 10px; border-radius:100px;">必須</span>
           </div>
-          <input type="text" value="{{name}}" onChange="{{onNameChange}}" placeholder="例）山田 太郎（ヤマダ タロウ）" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:16px; border:1.5px solid {{nameError}}; border-radius:12px; background:#fff; color:var(--text);">
+          <input type="text" name="お名前" value="{{name}}" onChange="{{onNameChange}}" placeholder="例）山田 太郎（ヤマダ タロウ）" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:16px; border:1.5px solid {{nameError}}; border-radius:12px; background:#fff; color:var(--text);">
           <sc-if value="{{showNameError}}" hint-placeholder-val="{{ false }}">
             <p style="margin:8px 0 0; font-size:12.5px; color:#C0553D;">お名前を入力してください。</p>
           </sc-if>
@@ -77,7 +78,7 @@
             <label style="font-size:15px; font-weight:700;">メールアドレス</label>
             <span style="font-size:11px; color:#fff; background:var(--accent-dark); padding:3px 10px; border-radius:100px;">必須</span>
           </div>
-          <input type="email" value="{{email}}" onChange="{{onEmailChange}}" placeholder="例）example@mail.com" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:16px; border:1.5px solid {{emailError}}; border-radius:12px; background:#fff; color:var(--text);">
+          <input type="email" name="メールアドレス" value="{{email}}" onChange="{{onEmailChange}}" placeholder="例）example@mail.com" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:16px; border:1.5px solid {{emailError}}; border-radius:12px; background:#fff; color:var(--text);">
           <sc-if value="{{showEmailError}}" hint-placeholder-val="{{ false }}">
             <p style="margin:8px 0 0; font-size:12.5px; color:#C0553D;">メールアドレスを入力してください。</p>
           </sc-if>
@@ -89,7 +90,7 @@
             <label style="font-size:15px; font-weight:700;">メールアドレス（確認用）</label>
             <span style="font-size:11px; color:#fff; background:var(--accent-dark); padding:3px 10px; border-radius:100px;">必須</span>
           </div>
-          <input type="email" value="{{emailConfirm}}" onChange="{{onEmailConfirmChange}}" placeholder="もう一度入力してください" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:16px; border:1.5px solid {{emailConfirmError}}; border-radius:12px; background:#fff; color:var(--text);">
+          <input type="email" name="メールアドレス確認" value="{{emailConfirm}}" onChange="{{onEmailConfirmChange}}" placeholder="もう一度入力してください" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:16px; border:1.5px solid {{emailConfirmError}}; border-radius:12px; background:#fff; color:var(--text);">
           <sc-if value="{{showEmailConfirmError}}" hint-placeholder-val="{{ false }}">
             <p style="margin:8px 0 0; font-size:12.5px; color:#C0553D;">{{emailConfirmErrorText}}</p>
           </sc-if>
@@ -105,7 +106,7 @@
           <p style="font-size:12.5px; color:var(--text-soft); margin:0 0 16px; text-wrap:pretty;">第一希望〜第三希望までをご入力ください。<br>対応可能時間は<b><u>9:00〜20:00(最終スタートは19:00) で、30分単位</u></b>でご選択ください。<br>また<u><b>定休日の火曜日と水曜日以外から</b></u>ご希望ください。</p><div style="display:flex; flex-direction:column; gap:14px;">
             <div>
               <p style="margin:0 0 6px; font-size:13px; color:var(--text-soft);">第一希望</p>
-              <input type="datetime-local" value="{{pref1}}" onChange="{{onPref1Change}}" min="{{minDate}}" step="1800" style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:15px; border:1.5px solid {{pref1Error}}; border-radius:12px; background:#fff; color:var(--text);">
+              <input type="datetime-local" name="第一希望日時" value="{{pref1}}" onChange="{{onPref1Change}}" min="{{minDate}}" step="1800" style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:15px; border:1.5px solid {{pref1Error}}; border-radius:12px; background:#fff; color:var(--text);">
               <sc-if value="{{showPrefError}}" hint-placeholder-val="{{ false }}">
                 <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">第一希望の日時を入力してください。</p>
               </sc-if>
@@ -121,7 +122,7 @@
             </div>
             <div>
               <p style="margin:0 0 6px; font-size:13px; color:var(--text-soft);">第二希望</p>
-              <input type="datetime-local" value="{{pref2}}" onChange="{{onPref2Change}}" min="{{minDate}}" step="1800" style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:15px; border:1.5px solid {{pref2Error}}; border-radius:12px; background:#fff; color:var(--text);">
+              <input type="datetime-local" name="第二希望日時" value="{{pref2}}" onChange="{{onPref2Change}}" min="{{minDate}}" step="1800" style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:15px; border:1.5px solid {{pref2Error}}; border-radius:12px; background:#fff; color:var(--text);">
               <sc-if value="{{showPref2Error}}" hint-placeholder-val="{{ false }}">
                 <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">第二希望の日時を入力してください。</p>
               </sc-if>
@@ -137,7 +138,7 @@
             </div>
             <div>
               <p style="margin:0 0 6px; font-size:13px; color:var(--text-soft);">第三希望</p>
-              <input type="datetime-local" value="{{pref3}}" onChange="{{onPref3Change}}" min="{{minDate}}" step="1800" style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:15px; border:1.5px solid {{pref3Error}}; border-radius:12px; background:#fff; color:var(--text);">
+              <input type="datetime-local" name="第三希望日時" value="{{pref3}}" onChange="{{onPref3Change}}" min="{{minDate}}" step="1800" style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:15px; border:1.5px solid {{pref3Error}}; border-radius:12px; background:#fff; color:var(--text);">
               <sc-if value="{{showPref3Error}}" hint-placeholder-val="{{ false }}">
                 <p style="margin:6px 0 0; font-size:12px; color:#C0553D;">第三希望の日時を入力してください。</p>
               </sc-if>
@@ -162,7 +163,7 @@
             <label style="font-size:15px; font-weight:700;">その他お伝えしたいこと</label>
             <span style="font-size:11px; color:var(--text-soft); background:var(--bg-alt); padding:3px 10px; border-radius:100px;">任意</span>
           </div>
-          <textarea value="{{message}}" onChange="{{onMessageChange}}" placeholder="ご質問やお伝えしたいことがあればご記入ください" rows="4" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:15px; border:1.5px solid var(--line); border-radius:12px; background:#fff; color:var(--text); resize:vertical;"></textarea>
+          <textarea name="その他" value="{{message}}" onChange="{{onMessageChange}}" placeholder="ご質問やお伝えしたいことがあればご記入ください" rows="4" style="width:100%; box-sizing:border-box; padding:14px 16px; font-size:15px; border:1.5px solid var(--line); border-radius:12px; background:#fff; color:var(--text); resize:vertical;"></textarea>
         </div>
 
         <button type="submit" style="width:100%; box-sizing:border-box; background:var(--accent); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.35); font-weight:700; font-size:17px; padding:20px; border-radius:100px; border:none; cursor:pointer; box-shadow:0 12px 30px -10px rgba(169,130,79,0.55); transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); transform:scale(1.02);">この内容で申し込む</button>
@@ -264,6 +265,12 @@ class Component extends DCLogic {
     return m === 0 || m === 30;
   }
 
+  encodeFormData(data) {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({ touched: true });
@@ -282,7 +289,28 @@ class Component extends DCLogic {
     const pref2AlignOk = this.isHalfHourAligned(s.pref2);
     const pref3AlignOk = this.isHalfHourAligned(s.pref3);
     if (nameOk && emailOk && emailConfirmOk && prefOk && pref1TimeOk && pref2TimeOk && pref3TimeOk && pref1DayOk && pref2DayOk && pref3DayOk && pref1AlignOk && pref2AlignOk && pref3AlignOk) {
-      window.location.href = './申し込み完了.dc.html';
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: this.encodeFormData({
+          'form-name': '申し込みフォーム',
+          'お名前': s.name,
+          'メールアドレス': s.email,
+          'メールアドレス確認': s.emailConfirm,
+          '第一希望日時': s.pref1,
+          '第二希望日時': s.pref2,
+          '第三希望日時': s.pref3,
+          'その他': s.message,
+        }),
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error('送信に失敗しました（status: ' + response.status + '）');
+          window.location.href = './申し込み完了.dc.html';
+        })
+        .catch((error) => {
+          console.error('フォーム送信エラー:', error);
+          alert('送信中にエラーが発生しました。お手数ですが時間をおいて再度お試しください。');
+        });
     }
   };
 
