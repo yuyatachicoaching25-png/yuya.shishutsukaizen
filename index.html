@@ -10,13 +10,13 @@
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap" rel="stylesheet">
   <style>
     @keyframes fadeUp { from { opacity:0; transform: translateY(18px); } to { opacity:1; transform:none; } }
     @keyframes floatSlow { 0%,100%{ transform: translateY(0px);} 50%{ transform: translateY(-14px);} }
     body { margin:0; -webkit-font-smoothing:antialiased; scroll-behavior:smooth; }
     html { scroll-behavior:smooth; }
-    #nav-worries, #nav-profile, #nav-about, #nav-steps, #nav-perks, #nav-voices, #nav-faq, #cta { scroll-margin-top:88px; }
+    #nav-worries, #nav-profile, #nav-about, #nav-steps, #nav-perks, #nav-voices, #nav-faq, #cta, #nav-free-course { scroll-margin-top:88px; }
     #desktop-nav, #desktop-cta { display:flex; }
     #hamburger-btn { display:none; }
     @media (max-width: 880px) {
@@ -25,6 +25,18 @@
     }
     @media (max-width: 700px) {
       #achievements-grid, #perks-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 480px) {
+      #floating-cta > span { padding:16px 28px !important; font-size:15px !important; }
+      #floating-cta { bottom:16px !important; }
+    }
+    @media (max-width: 600px) {
+      #header-spacer { height:64px !important; }
+      #hero-section { padding:16px 20px 32px !important; }
+      #hero-image-wrap { max-width:200px !important; min-width:0 !important; }
+      #hero-subhead { margin-bottom:10px !important; font-size:14px !important; }
+      #hero-h1 { font-size:24px !important; margin-bottom:14px !important; line-height:1.4 !important; }
+      #hero-image-frame { aspect-ratio:16/10 !important; }
     }
     image-slot { width:100% !important; height:100% !important; display:block !important; }
   </style>
@@ -42,8 +54,13 @@
         <a href="#nav-voices" onMouseEnter="{{navEnterVoices}}" onMouseLeave="{{navLeave}}" style="color:{{navColor.voices}}; font-size:14px; text-decoration:none; transition:color .15s ease;">受講者の声</a>
         <a href="#cta" onMouseEnter="{{navEnterPricing}}" onMouseLeave="{{navLeave}}" style="color:{{navColor.pricing}}; font-size:14px; text-decoration:none; transition:color .15s ease;">料金</a>
         <a href="#nav-faq" onMouseEnter="{{navEnterFaq}}" onMouseLeave="{{navLeave}}" style="color:{{navColor.faq}}; font-size:14px; text-decoration:none; transition:color .15s ease;">FAQ</a>
+        <a href="#nav-free-course" style="color:var(--accent-dark); font-size:14px; font-weight:700; text-decoration:none; transition:color .15s ease;" style-hover="color:var(--accent);">無料支出改善講座</a>
       </nav>
-      <a id="desktop-cta" href="./申し込みフォーム.dc.html" style="flex:none; display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.35); font-weight:700; font-size:13.5px; padding:11px 22px; border-radius:100px; text-decoration:none; white-space:nowrap; box-shadow:0 4px 10px -4px rgba(169,130,79,0.5); transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); color:#fff; transform:scale(1.06); box-shadow:0 6px 14px -4px rgba(169,130,79,0.6);">無料個別相談を予約する</a>
+      <a id="desktop-cta" href="./申し込みフォーム.dc.html" style="position:relative; flex:none; display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.35); font-weight:700; font-size:13.5px; padding:11px 22px; border-radius:100px; text-decoration:none; white-space:nowrap; box-shadow:0 6px 16px -6px rgba(169,130,79,0.55); transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); color:#fff; transform:scale(1.06); box-shadow:0 10px 22px -6px rgba(169,130,79,0.65);">無料個別相談を予約する
+        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.25); border-radius:100px; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+          <span style="color:#fff; font-size:10px; font-weight:700; letter-spacing:0.06em; white-space:nowrap; text-shadow:0 1px 3px rgba(0,0,0,0.6);">COMING SOON</span>
+        </div>
+      </a>
       <button id="hamburger-btn" style="align-items:center; justify-content:center; width:44px; height:44px; border-radius:10px; border:1.5px solid var(--text); background:transparent; cursor:pointer; flex:none;">
         <svg width="20" height="16" viewBox="0 0 20 16" fill="none"><line x1="0" y1="1" x2="20" y2="1" stroke="var(--text)" stroke-width="1.8" stroke-linecap="round"></line><line x1="0" y1="8" x2="20" y2="8" stroke="var(--text)" stroke-width="1.8" stroke-linecap="round"></line><line x1="0" y1="15" x2="20" y2="15" stroke="var(--text)" stroke-width="1.8" stroke-linecap="round"></line></svg>
       </button>
@@ -56,23 +73,33 @@
         <a href="#nav-voices" style="padding:12px 4px; color:var(--text); font-size:15px; text-decoration:none; border-bottom:1px solid var(--line);" style-hover="color:#C99A3E;">受講者の声</a>
         <a href="#cta" style="padding:12px 4px; color:var(--text); font-size:15px; text-decoration:none; border-bottom:1px solid var(--line);" style-hover="color:#C99A3E;">料金</a>
         <a href="#nav-faq" style="padding:12px 4px; color:var(--text); font-size:15px; text-decoration:none; border-bottom:1px solid var(--line);" style-hover="color:#C99A3E;">FAQ</a>
-        <a href="./申し込みフォーム.dc.html" style="margin-top:14px; margin-bottom:20px; text-align:center; display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.35); font-weight:700; font-size:14px; padding:14px 22px; border-radius:100px; text-decoration:none; transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); color:#fff; transform:scale(1.05); box-shadow:0 6px 14px -4px rgba(169,130,79,0.6);">無料個別相談を予約する</a>
+        <a href="#nav-free-course" style="padding:12px 4px; color:var(--accent-dark); font-weight:700; font-size:15px; text-decoration:none; border-bottom:1px solid var(--line);" style-hover="color:#C99A3E;">無料支出改善講座</a>
+        <a href="./申し込みフォーム.dc.html" style="position:relative; margin-top:14px; margin-bottom:20px; text-align:center; display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.35); font-weight:700; font-size:14px; padding:14px 22px; border-radius:100px; text-decoration:none; transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); color:#fff; transform:scale(1.05); box-shadow:0 10px 22px -6px rgba(169,130,79,0.65);">無料個別相談を予約する
+          <div style="position:absolute; inset:0; background:rgba(0,0,0,0.25); border-radius:100px; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+            <span style="color:#fff; font-size:11px; font-weight:700; letter-spacing:0.06em; white-space:nowrap; text-shadow:0 1px 3px rgba(0,0,0,0.6);">COMING SOON</span>
+          </div>
+        </a>
       </div>
     </div>
   </header>
   <div id="header-spacer" style="height:80px;"></div>
 
   <!-- HERO -->
-  <section data-screen-label="表紙" style="position:relative; padding:48px 24px 64px; background:var(--bg);">
+  <section id="hero-section" data-screen-label="表紙" style="position:relative; padding:48px 24px 64px; background:var(--bg);">
     <div style="max-width:880px; width:100%; margin:0 auto; display:flex; align-items:center; gap:24px; flex-wrap:wrap-reverse; justify-content:center;">
       <div style="flex:1 1 420px; min-width:280px; max-width:600px; text-align:left; animation: fadeUp 1s ease both;">
-        <p style="font-size:clamp(16px, 3vw, 21px); color:var(--text-soft); margin:0 0 28px; text-wrap:pretty;">節約も貯金もしてる。<br>でも"なんだか満たされない"あなたへ。</p>
-        <h1 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(30px, 6vw, 48px); line-height:1.5; color:var(--text); margin:0 0 36px; text-wrap:pretty;">自分らしい支出で、<br>心豊かな生き方を。<br></h1>
-        <a href="./申し込みフォーム.dc.html" style="display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.25); font-weight:700; font-size:19px; padding:22px 48px; border-radius:100px; text-decoration:none; box-shadow:0 8px 18px -8px rgba(58,51,44,0.32); letter-spacing:0.05em; transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); color:#fff; transform:scale(1.05); box-shadow:0 10px 22px -8px rgba(58,51,44,0.36);">無料個別相談を予約する</a>
+        <p id="hero-subhead" style="font-size:clamp(16px, 3vw, 21px); color:var(--text-soft); margin:0 0 28px; text-wrap:pretty;">節約も貯金もしてる。<br>でも"なんだか満たされない"あなたへ。</p>
+        <h1 id="hero-h1" style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(30px, 6vw, 48px); line-height:1.5; color:var(--text); margin:0 0 36px; text-wrap:pretty;">自分らしい支出で、<br>心豊かな生き方を。<br></h1>
+        <p style="margin:0 0 14px; font-size:clamp(13px, 2.4vw, 15px); color:var(--accent-dark); font-weight:700; letter-spacing:0.03em; text-wrap:pretty;">割引先行募集期間「7月26日(日)10:00〜7月31日(金)23:59まで」<br>※詳細は料金ページをご確認ください。</p>
+        <a href="./申し込みフォーム.dc.html" style="position:relative; display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.25); font-weight:700; font-size:19px; padding:22px 48px; border-radius:100px; text-decoration:none; box-shadow:0 12px 30px -10px rgba(58,51,44,0.35); letter-spacing:0.05em; transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); color:#fff; transform:scale(1.05); box-shadow:0 16px 36px -8px rgba(58,51,44,0.4);">無料個別相談を予約する
+          <div style="position:absolute; inset:0; background:rgba(0,0,0,0.25); border-radius:100px; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+            <span style="color:#fff; font-size:15px; font-weight:700; letter-spacing:0.08em; white-space:nowrap; text-shadow:0 1px 3px rgba(0,0,0,0.6);">COMING SOON</span>
+          </div>
+        </a>
         <p style="margin: 18px 0 0; font-size: clamp(14px, 2.6vw, 20px); color: var(--text-soft);"><b>✔︎支出の悩みや課題の整理<br>✔︎オンライン　✔︎所要時間30分</b></p>
       </div>
-      <div style="flex:1 1 340px; min-width:260px; max-width:440px;">
-        <div style="width:100%; aspect-ratio:4/5; border-radius:28px; overflow:hidden; box-shadow:0 14px 28px -14px rgba(58,51,44,0.28);">
+      <div id="hero-image-wrap" style="flex:1 1 340px; min-width:260px; max-width:440px;">
+        <div id="hero-image-frame" style="width:100%; aspect-ratio:4/5; border-radius:28px; overflow:hidden; box-shadow:0 24px 50px -20px rgba(58,51,44,0.3);">
           <img src="./assets/slot-hero-photo.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
@@ -86,7 +113,7 @@
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:16px; margin-bottom:56px;">
         <sc-for list="{{painPoints}}" as="p" hint-placeholder-count="6">
           <div data-reveal="" style="opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; transition-delay:calc({{ $index }} * 90ms);">
-            <div style="display:flex; align-items:flex-start; gap:clamp(12px, 3vw, 24px); background:#fff; border-radius:18px; padding:clamp(16px, 4vw, 22px) clamp(16px, 4vw, 30px); box-shadow:0 6px 16px -10px rgba(58,51,44,0.18);">
+            <div style="display:flex; align-items:flex-start; gap:clamp(12px, 3vw, 24px); background:#fff; border-radius:18px; padding:clamp(16px, 4vw, 22px) clamp(16px, 4vw, 30px); box-shadow:0 10px 30px -18px rgba(58,51,44,0.2);">
               <div style="flex:none; width:clamp(38px, 9vw, 56px); height:clamp(38px, 9vw, 56px); border-radius:50%; background:var(--bg-alt); display:flex; align-items:center; justify-content:center;" dangerouslySetInnerHTML="{{p.iconHtml}}"></div>
               <div style="flex:none; width:clamp(18px, 5vw, 30px); text-align:center; color:var(--accent-dark); font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(13px, 3vw, 15px);">{{p.n}}</div>
               <div style="flex:1;">
@@ -97,7 +124,30 @@
           </div>
         </sc-for>
       </div>
-      <p style="text-align: center; max-width: 640px; margin: 0 auto; font-size: 20px; color: var(--text-soft); text-wrap: pretty">支出改善コーチングは、周囲に流されず<b>今を大切にしながら</b><br>お金の使い方・貯め方の<b>"自分軸を整える"</b>セッションです。</p>
+      <p style="text-align: center; max-width: 640px; margin: 0 auto; font-size: 20px; color: var(--text-soft); text-wrap: pretty">支出改善コーチングは、<b>今を大切にしながら</b><br>お金の使い方・貯め方の<b>"自分軸を整える"</b>セッションです。</p>
+    </div>
+  </section>
+
+  <!-- 無料講座① -->
+  <section id="nav-free-course" data-screen-label="無料講座(共感直後)" data-reveal="" style="padding:clamp(56px, 10vw, 100px) 20px; opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); position:relative;">
+    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.35); z-index:5; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+      <p style="font-family:'Shippori Mincho', serif; font-weight:700; font-size:clamp(24px, 5vw, 40px); color:#fff; letter-spacing:0.12em; text-shadow:0 4px 16px rgba(0,0,0,0.4); margin:0;">COMING SOON</p>
+    </div>
+    <div style="max-width:960px; margin:0 auto; background:var(--bg-alt); border-radius:24px; padding:clamp(32px, 6vw, 56px); display:flex; align-items:center; gap:clamp(24px, 5vw, 48px); flex-wrap:wrap;">
+      <div style="flex:1 1 340px; max-width:440px;">
+        <div style="width:100%; aspect-ratio:4/3; border-radius:18px; overflow:hidden; background:#fff; border:1px solid var(--line); box-shadow:0 10px 30px -18px rgba(58,51,44,0.25);">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="free-course-eyecatch-1" shape="rect" radius="18" placeholder="無料支出改善講座のアイキャッチ画像（サムネイル）" style="width:100%;height:100%;" hint-size="100%,100%"></x-import>
+        </div>
+      </div>
+      <div style="flex:1 1 320px; text-align:left;">
+        <p style="font-size:13px; color:var(--accent-dark); letter-spacing:0.1em; margin:0 0 12px; font-weight:700;">無料・60分でわかる</p>
+        <h2 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(22px, 4vw, 28px); margin:0 0 20px; text-wrap:pretty;">無料支出改善講座<br>「節約の先にある、本当に豊かな人生」</h2>
+        <p style="font-size:15.5px; color:var(--text-soft); line-height:1.9; text-wrap:pretty; margin:0 0 28px;">「とりあえず節約したい」「老後のために貯金しなきゃ」——<br>その先には、<b style="color:var(--text);">自分軸を持って心豊かにお金を使い、"今"から満足できる人生</b>があります。<br>60分の無料講座で、貯金がゴールではないお金との向き合い方を体験してください。</p>
+        <span style="position:relative; display:inline-block;">
+          <a href="./無料支出改善講座.dc.html" style="display:inline-flex; align-items:center; gap:8px; background:#fff; color:var(--accent-dark); font-weight:700; font-size:15px; padding:15px 34px; border-radius:12px; border:2px solid var(--accent-dark); text-decoration:none; opacity:0.85; transition:background .2s ease, color .2s ease;" style-hover="background:var(--accent-dark); color:#fff;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex:none;"><path d="M2 3 L14 8 L2 13 Z" fill="currentColor"></path></svg>無料支出改善講座を受ける</a>
+          <span style="position:absolute; top:-12px; right:-12px; background:#3A332C; color:#fff; font-size:11px; font-weight:700; padding:4px 12px; border-radius:100px; letter-spacing:0.04em; box-shadow:0 4px 10px rgba(0,0,0,0.25); pointer-events:none; white-space:nowrap; z-index:2;">COMING SOON</span>
+        </span>
+      </div>
     </div>
   </section>
 
@@ -136,11 +186,11 @@
   <!-- 実現したこと -->
   <section data-screen-label="実現したこと" data-reveal="" style="background:var(--bg-alt); padding:clamp(56px, 10vw, 120px) 20px; opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);">
     <div style="max-width:1080px; margin:0 auto;">
-      <h2 style="text-align:center; font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(24px, 4vw, 32px); margin:0 0 64px; text-wrap:pretty;">ユヤの節約ルーティンで実現した<br>心豊かな節約、人生</h2>
+      <h2 style="text-align:center; font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(24px, 4vw, 32px); margin:0 0 64px; text-wrap:pretty;">節約ルーティンで実現した<br>心豊かな私の人生</h2>
       <div id="achievements-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:32px;">
         <sc-for list="{{achievements}}" as="a" hint-placeholder-count="3">
           <div data-reveal="" style="opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; transition-delay:calc({{ $index }} * 100ms);">
-            <div style="display:flex; flex-direction:column; gap:20px; background:#fff; border-radius:20px; padding:20px; box-shadow:0 6px 16px -10px rgba(58,51,44,0.18);">
+            <div style="display:flex; flex-direction:column; gap:20px; background:#fff; border-radius:20px; padding:20px; box-shadow:0 10px 30px -18px rgba(58,51,44,0.2);">
             <div style="width:100%; height:220px; border-radius:14px; overflow:hidden;">
               <sc-if value="{{a.isAchievement1}}" hint-placeholder-val="{{ false }}">
                 <div style="width:100%; height:100%;">
@@ -176,7 +226,7 @@
         <h3 style="text-align: center; font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: 32px; margin: 0 0 32px">視聴者さんからの声</h3>
         <div style="display:flex; flex-direction:column; gap:16px;">
           <sc-for list="{{comments}}" as="c" hint-placeholder-count="6">
-            <div style="display:flex; gap:14px; padding:20px 24px; background:#fff; border-radius:14px; box-shadow:0 6px 14px -10px rgba(58,51,44,0.24);">
+            <div style="display:flex; gap:14px; padding:20px 24px; background:#fff; border-radius:14px; box-shadow:0 10px 26px -16px rgba(58,51,44,0.28);">
               <div style="flex:none; width:40px; height:40px; border-radius:50%; background:{{c.avatarColor}}; overflow:hidden; position:relative;">
                 <svg width="40" height="40" viewBox="0 0 40 40" style="position:absolute; inset:0;"><circle cx="20" cy="15.5" r="7" fill="{{c.avatarLight}}"></circle><circle cx="20" cy="40" r="14" fill="{{c.avatarLight}}"></circle></svg>
               </div>
@@ -199,7 +249,7 @@
           </sc-for>
         </div>
       </div>
-      <p style="text-align:center; max-width:720px; margin:64px auto 0; font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(19px, 3.2vw, 26px); line-height:1.8; color:var(--text); text-wrap:pretty; border-top:1px solid var(--line); padding-top:40px;">多くの方に共感を得た心豊かな節約・人生は、<br><span style="color: var(--accent-dark);">価値観を明確にした支出改善</span>がスタートでした。</p>
+      <p style="text-align:center; max-width:720px; margin:64px auto 0; font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(19px, 3.2vw, 26px); line-height:1.8; color:var(--text); text-wrap:pretty; border-top:1px solid var(--line); padding-top:40px;">多くの方から共感を得た心豊かな節約・人生は、<br><span style="color: var(--accent-dark);">価値観を明確にした支出改善</span>がスタートでした。</p>
     </div>
   </section>
 
@@ -233,7 +283,7 @@
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:24px; margin:56px 0 56px;">
         <sc-for list="{{values}}" as="v" hint-placeholder-count="4">
           <div data-reveal="" style="opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; transition-delay:calc({{ $index }} * 90ms);">
-            <div style="background:#fff; border-radius:20px; padding:32px; box-shadow:0 6px 16px -10px rgba(58,51,44,0.22); text-align:center;">
+            <div style="background:#fff; border-radius:20px; padding:32px; box-shadow:0 10px 30px -18px rgba(58,51,44,0.25); text-align:center;">
               <p style="margin: 0 0 4px; color: var(--accent-dark); font-family: 'Shippori Mincho', serif; font-weight: 600; font-size: 30px; letter-spacing: 0.1em">{{v.n}}</p>
               <p style="margin: 0 0 20px; font-size: 30px; font-weight: 700">{{v.text}}</p>
               <div style="width:72px; height:72px; border-radius:50%; background:var(--bg-alt); display:flex; align-items:center; justify-content:center; margin:0 auto 24px;" dangerouslySetInnerHTML="{{v.iconHtml}}"></div>
@@ -273,30 +323,36 @@
     <div style="max-width:760px; margin:0 auto;">
       <h2 style="text-align:center; font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(22px, 3.6vw, 30px); margin:0 0 64px;">支出改善コーチングの進め方</h2>
       <div style="display:flex; flex-direction:column; gap:0;">
-        <sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
+        <sc-for list="{{steps}}" as="s" hint-placeholder-count="5">
           <div data-reveal="" style="display:flex; gap:28px; opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; transition-delay:calc({{ $index }} * 120ms); padding-bottom:28px;">
             <div style="flex:none; display:flex; flex-direction:column; align-items:center;">
               <div style="width:44px; height:44px; border-radius:50%; background:#fff; border:2px solid var(--accent-dark); color:var(--accent-dark); font-family:'Shippori Mincho', serif; font-weight:700; font-size:17px; display:flex; align-items:center; justify-content:center;">{{s.n}}</div>
               <div style="width:1.5px; flex:1; background:var(--line); margin:6px 0;"></div>
             </div>
-            <div style="flex:1; background:#fff; border-radius:18px; padding:clamp(20px, 5vw, 32px) clamp(18px, 5vw, 36px); box-shadow:0 6px 16px -10px rgba(58,51,44,0.14); margin-bottom:8px;">
-              <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
+            <div style="flex:1; background:#fff; border-radius:18px; padding:clamp(20px, 5vw, 32px) clamp(18px, 5vw, 36px); box-shadow:0 10px 30px -18px rgba(58,51,44,0.15); margin-bottom:8px; border:{{s.optionalBorder}};">
+              <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px; flex-wrap:wrap;">
                 <div style="flex:none; width:44px; height:44px; border-radius:12px; background:var(--bg-alt); display:flex; align-items:center; justify-content:center;" dangerouslySetInnerHTML="{{s.iconHtml}}"></div>
                 <p style="margin:0; font-weight:700; font-size:clamp(15px, 2.4vw, 18px);">{{s.title}}</p>
+                <sc-if value="{{s.isOptional}}" hint-placeholder-val="{{ false }}">
+                  <span style="font-size:11px; color:var(--text-soft); background:var(--bg-alt); padding:3px 10px; border-radius:100px;">任意・スキップ可</span>
+                </sc-if>
               </div>
               <p style="margin:0 0 20px; font-size:15px; color:var(--text-soft); text-wrap:pretty;">{{s.desc}}</p>
+              <sc-if value="{{s.isOptional}}" hint-placeholder-val="{{ false }}">
+                <a href="./無料支出改善講座.dc.html" style="font-size:14.5px; color:var(--accent-dark); text-decoration:none; font-weight:700; opacity:0.85;" style-hover="text-decoration:underline;">(coming soon)＞＞ 無料支出改善講座を受ける</a>
+              </sc-if>
               <sc-if value="{{s.isSheet1}}" hint-placeholder-val="{{ false }}">
-                <div style="background:#fff; border-radius:18px; max-width:300px; overflow:hidden; box-shadow:0 8px 18px -10px rgba(58,51,44,0.35); border:1px solid var(--line);">
+                <div style="background:#fff; border-radius:18px; max-width:300px; overflow:hidden; box-shadow:0 18px 40px -16px rgba(58,51,44,0.45); border:1px solid var(--line);">
                   <img src="./assets/worksheet-sheet1.png" alt="人生振り返りワーク" loading="lazy" style="display:block; width:100%; height:auto;">
                 </div>
               </sc-if>
               <sc-if value="{{s.isSheet2}}" hint-placeholder-val="{{ false }}">
-                <div style="background:#fff; border-radius:18px; max-width:300px; overflow:hidden; box-shadow:0 8px 18px -10px rgba(58,51,44,0.35); border:1px solid var(--line);">
+                <div style="background:#fff; border-radius:18px; max-width:300px; overflow:hidden; box-shadow:0 18px 40px -16px rgba(58,51,44,0.45); border:1px solid var(--line);">
                   <img src="./assets/worksheet-sheet2.png" alt="お金の羅針盤シート" loading="lazy" style="display:block; width:100%; height:auto;">
                 </div>
               </sc-if>
               <sc-if value="{{s.hasSheet}}" hint-placeholder-val="{{ false }}">
-                <div style="background:#fff; border-radius:18px; max-width:340px; overflow:hidden; box-shadow:0 6px 16px -10px rgba(58,51,44,0.26);">
+                <div style="background:#fff; border-radius:18px; max-width:340px; overflow:hidden; box-shadow:0 10px 30px -18px rgba(58,51,44,0.3);">
                   <div style="background:var(--accent); padding:16px 22px;">
                     <p style="margin:0; font-size:11px; color:#5c4a2e; letter-spacing:0.08em;">{{s.sheetTag}}</p>
                     <p style="margin:2px 0 0; font-family:'Shippori Mincho', serif; font-weight:600; font-size:16px; color:#3A332C;">{{s.sheetTitle}}</p>
@@ -361,7 +417,7 @@
       <div style="display:flex; flex-direction:column; gap:20px; margin-bottom:48px;">
         <sc-for list="{{testimonials}}" as="t" hint-placeholder-count="3">
           <div data-reveal="" style="opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; transition-delay:calc({{ $index }} * 90ms);">
-            <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:20px; padding:28px 36px; box-shadow:0 6px 16px -10px rgba(58,51,44,0.18);">
+            <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:20px; padding:28px 36px; box-shadow:0 10px 30px -18px rgba(58,51,44,0.2);">
               <div style="flex:none; width:80px; height:80px; border-radius:50%; background:var(--bg-alt); display:flex; align-items:center; justify-content:center;" dangerouslySetInnerHTML="{{t.iconHtml}}"></div>
               <div style="flex:1;">
                 <p style="margin:0 0 6px; font-weight:700; font-size:17px;">{{t.name}}</p>
@@ -421,22 +477,27 @@
     <div style="max-width:520px; margin:0 auto; text-align:center;">
       <h2 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(22px, 3.6vw, 30px); margin:0 0 28px;">支出改善コーチングの料金</h2>
       <p style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(18px, 3.2vw, 24px); color:var(--accent-dark); line-height:1.7; margin:0 0 44px; text-wrap:pretty;">一回のセッションで、<br>一生使える支出改善の羅針盤を手に入れます。</p>
-      <div style="background:#fff; border-radius:20px; padding:44px 40px; box-shadow:0 8px 18px -10px rgba(58,51,44,0.26);">
+      <div style="background:#fff; border-radius:20px; padding:44px 40px; box-shadow:0 12px 34px -18px rgba(58,51,44,0.3);">
         <div style="display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line);">
           <span style="color:var(--text-soft); font-size:15px;">回数</span><span style="font-weight:700;">1回</span>
         </div>
-        <div style="display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line);">
-          <span style="color:var(--text-soft); font-size:15px;">料金</span><span style="font-weight:700;">16,500円（税込）</span>
+        <div style="display:flex; justify-content:space-between; padding:14px 0;">
+          <span style="color:var(--text-soft); font-size:15px;">料金</span><span style="font-weight:700;"><span style="text-decoration:line-through; color:var(--text-soft); font-weight:400; margin-right:8px;">16,500円（税込）</span>9,900円（税込）</span>
         </div>
+        <p style="margin: 0; padding: 0 0 14px; font-size: 12px; color: #C0392B; text-wrap: pretty; border-bottom: 1px solid var(--line)"><b>★割引条件：先行募集期間「7月26日(日)10:00〜7月31日(金)23:59まで」に<br>無料個別相談を申し込んだ方が対象となります。</b></p>
         <div style="display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line);">
-          <span style="color:var(--text-soft); font-size:15px;">時間</span><span style="font-weight:700;">60分〜90分</span>
+          <span style="color:var(--text-soft); font-size:15px;">時間</span><span style="font-weight:700;">60分</span>
         </div>
         <div style="display:flex; justify-content:space-between; padding:14px 0;">
           <span style="color:var(--text-soft); font-size:15px;">方法</span><span style="font-weight:700;">オンライン（Zoom）</span>
         </div>
       </div>
       <p style="margin: 44px 0 28px; font-size: 20px; text-wrap: pretty"><b>まずは無料個別相談で支出の悩みや課題の整理から。</b></p>
-      <a href="./申し込みフォーム.dc.html" style="display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.4); font-weight:700; font-size:17px; padding:20px 48px; border-radius:100px; text-decoration:none; box-shadow:0 8px 18px -8px rgba(169,130,79,0.5); transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); color:#fff; transform:scale(1.05); box-shadow:0 10px 22px -8px rgba(169,130,79,0.6);">無料個別相談を予約する</a>
+      <a href="./申し込みフォーム.dc.html" style="position:relative; display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.4); font-weight:700; font-size:17px; padding:20px 48px; border-radius:100px; text-decoration:none; box-shadow:0 12px 30px -10px rgba(169,130,79,0.55); transition:transform .2s ease, box-shadow .2s ease;" style-hover="background:var(--accent-dark); color:#fff; transform:scale(1.05); box-shadow:0 16px 36px -8px rgba(169,130,79,0.65);">無料個別相談を予約する
+        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.25); border-radius:100px; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+          <span style="color:#fff; font-size:13px; font-weight:700; letter-spacing:0.07em; white-space:nowrap; text-shadow:0 1px 3px rgba(0,0,0,0.6);">COMING SOON</span>
+        </div>
+      </a>
       <div style="display:flex; flex-direction:column; gap:8px; align-items:center; margin-top:28px;">
         
         <p style="margin:0; font-size:13px; color:var(--text-soft);"><b style="font-size: 20px">・全国どこからでもオンラインで参加できます</b></p>
@@ -452,7 +513,7 @@
       <div style="display:flex; flex-direction:column; gap:14px;">
         <sc-for list="{{faqs}}" as="f" hint-placeholder-count="7">
           <div data-reveal="" style="opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; transition-delay:calc({{ $index }} * 70ms);">
-            <div style="display:flex; align-items:flex-start; gap:clamp(12px, 3vw, 24px); background:#fff; border-radius:18px; padding:clamp(18px, 4vw, 28px) clamp(16px, 4vw, 32px); box-shadow:0 6px 16px -10px rgba(58,51,44,0.18);">
+            <div style="display:flex; align-items:flex-start; gap:clamp(12px, 3vw, 24px); background:#fff; border-radius:18px; padding:clamp(18px, 4vw, 28px) clamp(16px, 4vw, 32px); box-shadow:0 10px 30px -18px rgba(58,51,44,0.2);">
               <div style="flex:none; width:clamp(38px, 9vw, 56px); height:clamp(38px, 9vw, 56px); border-radius:50%; background:var(--bg-alt); display:flex; align-items:center; justify-content:center; color:var(--accent-dark); font-family:'Shippori Mincho', serif; font-weight:700; font-size:20px;">Q</div>
               <div style="flex:none; width:clamp(18px, 5vw, 30px); text-align:center; color:var(--accent-dark); font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(13px, 3vw, 15px);">{{f.n}}</div>
               <div style="flex:1;">
@@ -474,6 +535,26 @@
     </div>
   </section>
 
+  <!-- 無料講座② -->
+  <section data-screen-label="無料講座(クロージング前)" data-reveal="" style="background:var(--bg-alt); padding:clamp(56px, 10vw, 100px) 20px; opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); position:relative;">
+    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.35); z-index:5; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+      <p style="font-family:'Shippori Mincho', serif; font-weight:700; font-size:clamp(24px, 5vw, 40px); color:#fff; letter-spacing:0.12em; text-shadow:0 4px 16px rgba(0,0,0,0.4); margin:0;">COMING SOON</p>
+    </div>
+    <div style="max-width:960px; margin:0 auto; background:#fff; border-radius:24px; padding:clamp(32px, 6vw, 56px); display:flex; align-items:center; gap:clamp(24px, 5vw, 48px); flex-wrap:wrap; box-shadow:0 20px 50px -30px rgba(58,51,44,0.3);">
+      <div style="flex:1 1 340px; max-width:440px;">
+        <div style="width:100%; aspect-ratio:4/3; border-radius:18px; overflow:hidden; background:var(--bg-alt); border:1px solid var(--line); box-shadow:0 10px 30px -18px rgba(58,51,44,0.2);">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="free-course-eyecatch-2" shape="rect" radius="18" placeholder="無料支出改善講座のアイキャッチ画像（サムネイル）" style="width:100%;height:100%;" hint-size="100%,100%"></x-import>
+        </div>
+      </div>
+      <div style="flex:1 1 320px; text-align:left;">
+        <p style="font-size:13px; color:var(--accent-dark); letter-spacing:0.1em; margin:0 0 12px; font-weight:700;">まずは無料で、60分</p>
+        <h2 style="font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(22px, 4vw, 28px); margin:0 0 20px; text-wrap:pretty;">相談の前に、<br>無料支出改善講座から始めませんか？</h2>
+        <p style="font-size:15.5px; color:var(--text-soft); line-height:1.9; text-wrap:pretty; margin:0 0 28px;">貯金や節約は、あくまで手段。本当のゴールは<b style="color:var(--text);">メリハリのあるお金の使い方で、"今"を含めた人生全体を豊かにすること</b>です。<br>無料講座でその考え方に触れてから、あなたに合う一歩を選んでください。</p>
+        <a href="./無料支出改善講座.dc.html" style="display:inline-flex; align-items:center; gap:8px; background:#fff; color:var(--accent-dark); font-weight:700; font-size:15px; padding:15px 34px; border-radius:12px; border:2px solid var(--accent-dark); text-decoration:none; transition:background .2s ease, color .2s ease;" style-hover="background:var(--accent-dark); color:#fff;"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex:none;"><path d="M2 3 L14 8 L2 13 Z" fill="currentColor"></path></svg>無料支出改善講座を受ける</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer data-reveal="" style="position:relative; overflow:hidden; color:#EDE6D8; padding:64px 24px 40px; text-align:center; opacity:0; transform:translateY(20px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);">
     <div style="position:absolute; inset:0; background-image:url('./assets/footer-bg-opt.jpg'); background-size:cover; background-position:center;"></div>
@@ -487,7 +568,11 @@
   </footer>
 
   <a id="floating-cta" href="./申し込みフォーム.dc.html" style="position:fixed; left:50%; bottom:28px; transform:translate(-50%, 40px); opacity:0; pointer-events:none; z-index:90; display:inline-block; text-decoration:none; transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1);">
-    <span style="display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.4); font-weight:700; font-size:19px; padding:22px 48px; border-radius:100px; white-space:nowrap; letter-spacing:0.05em; box-shadow:0 8px 18px -8px rgba(58,51,44,0.4); transition:transform .2s ease, box-shadow .2s ease, background .2s ease;" style-hover="background:var(--accent-dark); transform:scale(1.06); box-shadow:0 10px 22px -8px rgba(58,51,44,0.5);">無料個別相談を予約する</span>
+    <span style="position:relative; display:inline-block; background:var(--accent); color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.4); font-weight:700; font-size:19px; padding:22px 48px; border-radius:100px; white-space:nowrap; letter-spacing:0.05em; box-shadow:0 12px 30px -10px rgba(58,51,44,0.45); transition:transform .2s ease, box-shadow .2s ease, background .2s ease;" style-hover="background:var(--accent-dark); transform:scale(1.06); box-shadow:0 16px 36px -8px rgba(58,51,44,0.55);">無料個別相談を予約する
+      <div style="position:absolute; inset:0; background:rgba(0,0,0,0.25); border-radius:100px; display:flex; align-items:center; justify-content:center; pointer-events:none;">
+        <span style="color:#fff; font-size:15px; font-weight:700; letter-spacing:0.08em; white-space:nowrap; text-shadow:0 1px 3px rgba(0,0,0,0.6);">COMING SOON</span>
+      </div>
+    </span>
   </a>
 
 </div>
@@ -575,7 +660,9 @@ class Component extends DCLogic {
   ];
 
   stepData = [
-    { n: '①', title: '無料個別相談（30分）', desc: 'お申し込み内容をもとに悩みや課題の整理をします。相性が良い場合のみ本セッションをご案内します。', hasSheet: false,
+    { n: '⓪', title: '無料支出改善講座（60分・無料）', desc: 'まずは無料講座で、貯金や節約がゴールではない「心豊かなお金の使い方」の考え方に触れていただきます。', isOptional: true, optionalBorder: '1.5px dashed var(--line)',
+      iconHtml: { __html: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="${this.ICON_STROKE}" stroke-width="1.6"/><path d="M10 8.5 L16 12 L10 15.5 Z" stroke="${this.ICON_STROKE}" stroke-width="1.6" stroke-linejoin="round"/></svg>` } },
+    { n: '①', title: '無料個別相談（30分）', optionalBorder: 'none', desc: 'お申し込み内容をもとに悩みや課題の整理をします。相性が良い場合のみ本セッションをご案内します。', hasSheet: false,
       iconHtml: { __html: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="14" height="12" rx="2.5" stroke="${this.ICON_STROKE}" stroke-width="1.6"/><path d="M16 10.5 L22 7.5 V16.5 L16 13.5" stroke="${this.ICON_STROKE}" stroke-width="1.6" stroke-linejoin="round"/></svg>` } },
     { n: '②', title: '事前ワークの実施', desc: '事前ワークとして「人生振り返りワーク」を作成していただきます。', hasSheet: false,
       isSheet1: true,
@@ -644,12 +731,9 @@ class Component extends DCLogic {
 
     const rootEl = document.querySelector('x-dc > div') || document.body;
     rootEl.style.transition = 'opacity .35s ease';
-    document.querySelectorAll('a[href="./申し込みフォーム.dc.html"]').forEach(a => {
+    document.querySelectorAll('a[href="./申し込みフォーム.dc.html"], a[href="./無料支出改善講座.dc.html"]').forEach(a => {
       a.addEventListener('click', (e) => {
         e.preventDefault();
-        const href = a.getAttribute('href');
-        rootEl.style.opacity = '0';
-        setTimeout(() => { window.location.href = href; }, 320);
       });
     });
 
@@ -726,7 +810,7 @@ class Component extends DCLogic {
       comments: this.commentData,
       values: this.valueData,
       testimonials: this.testimonialData,
-      steps: this.stepData,
+      steps: this.stepData.map(s => ({ ...s, optionalBorder: s.optionalBorder || 'none' })),
       perks: this.perkData,
       faqs: this.faqData.map((f, i) => ({
         n: ['①','②','③','④','⑤','⑥','⑦'][i] || '',
