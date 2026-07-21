@@ -414,14 +414,16 @@
   <section id="nav-voices" data-screen-label="受講者の声" data-reveal="" style="background:var(--bg-alt); padding:clamp(56px, 10vw, 120px) 20px; opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);">
     <div style="max-width:960px; margin:0 auto;">
       <h2 style="text-align:center; font-family:'Shippori Mincho', serif; font-weight:600; font-size:clamp(24px, 4vw, 32px); margin:0 0 56px;">支出改善コーチング受講者の声</h2>
-      <div style="display:flex; flex-direction:column; gap:20px; margin-bottom:48px;">
+      <div style="display:flex; flex-direction:column; gap:24px; margin-bottom:48px; max-width:600px; margin-left:auto; margin-right:auto;">
         <sc-for list="{{testimonials}}" as="t" hint-placeholder-count="3">
           <div data-reveal="" style="opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; transition-delay:calc({{ $index }} * 90ms);">
-            <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:20px; padding:28px 36px; box-shadow:0 10px 30px -18px rgba(58,51,44,0.2);">
-              <div style="flex:none; width:80px; height:80px; border-radius:50%; background:var(--bg-alt); display:flex; align-items:center; justify-content:center;" dangerouslySetInnerHTML="{{t.iconHtml}}"></div>
-              <div style="flex:1;">
-                <p style="margin:0 0 6px; font-weight:700; font-size:17px;">{{t.name}}</p>
-                <p style="margin:0; font-size:14px; color:var(--text-soft); text-wrap:pretty;">{{t.placeholder}}</p>
+            <div style="background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px -18px rgba(58,51,44,0.2);">
+              <div style="width:100%; aspect-ratio:16/9;">
+                <img src="{{t.image}}" alt="{{t.name}}" style="width:100%;height:100%;object-fit:cover;display:block;">
+              </div>
+              <div style="padding:24px 28px;">
+                <p style="margin:0 0 10px; font-weight:700; font-size:16px;">{{t.name}}</p>
+                <p style="margin:0; font-size:14px; color:var(--text-soft); line-height:1.85; text-wrap:pretty;">{{t.comment}}</p>
               </div>
             </div>
           </div>
@@ -665,12 +667,12 @@ class Component extends DCLogic {
   ];
 
   testimonialData = [
-    { name: 'Aさん', placeholder: '＜Coming soon＞',
-      iconHtml: { __html: `<svg width="26" height="28" viewBox="0 0 26 28" fill="none"><circle cx="13" cy="8" r="6.5" stroke="${this.ICON_STROKE}" stroke-width="1.7"/><path d="M2.5 27 C2.5 18.5 7 15 13 15 C19 15 23.5 18.5 23.5 27" stroke="${this.ICON_STROKE}" stroke-width="1.7" stroke-linecap="round"/></svg>` } },
-    { name: 'Bさん', placeholder: '＜Coming soon＞',
-      iconHtml: { __html: `<svg width="26" height="28" viewBox="0 0 26 28" fill="none"><circle cx="13" cy="8" r="6.5" stroke="${this.ICON_STROKE}" stroke-width="1.7"/><path d="M6.5 6 Q7.5 4.5 8.7 6" stroke="${this.ICON_STROKE}" stroke-width="1.3" stroke-linecap="round"/><path d="M17.3 6 Q18.3 4.5 19.5 6" stroke="${this.ICON_STROKE}" stroke-width="1.3" stroke-linecap="round"/><path d="M9.5 10.5 Q13 13 16.5 10.5" stroke="${this.ICON_STROKE}" stroke-width="1.3" stroke-linecap="round"/><path d="M2.5 27 C2.5 18.5 7 15 13 15 C19 15 23.5 18.5 23.5 27" stroke="${this.ICON_STROKE}" stroke-width="1.7" stroke-linecap="round"/></svg>` } },
-    { name: 'Cさん', placeholder: '＜Coming soon＞',
-      iconHtml: { __html: `<svg width="26" height="28" viewBox="0 0 26 28" fill="none"><circle cx="13" cy="7.5" r="6" stroke="${this.ICON_STROKE}" stroke-width="1.7"/><path d="M13 1.5 C10 3.5 9 6 9 8" stroke="${this.ICON_STROKE}" stroke-width="1.3" stroke-linecap="round"/><path d="M2.5 27 C2.5 18.5 7 14.5 13 14.5 C19 14.5 23.5 18.5 23.5 27" stroke="${this.ICON_STROKE}" stroke-width="1.7" stroke-linecap="round"/></svg>` } },
+    { name: 'Sさん（20代・女性・公務員）', image: './assets/voice-i.png',
+      comment: '人生経験を振り返るワークから実際にセッションでお話する中で、価値観を明確に出来たことが悩み解消に役立てたと思います。これまで何となく「コーチング=難しいもの」と捉えていましたが全くそんな事ありません。私のように、自問自答しがち・ぐるぐる思考になりがちな方は特にコーチングをお勧めしたいです！なかなか私が言語化出来ていなくても、ユヤさんは否定や急かす言葉等一切せず受け止めたり言語化して頂いたので、こちらは安心してお話することが出来ました。' },
+    { name: 'Nさん（30代・男性・会社員）', image: './assets/voice-s.png',
+      comment: '世の中には色んな節約ノウハウがあります。それをいろいろ試してみるのは素晴らしい事ですが、本当に大切な事はその節約方法が自分の価値観に合っているかどうか。例えば私自身はスーパーでの買い物は普段は節約を心がけていますが、連勤の最終日の夜は自分へのご褒美も兼ねて節約を意識せず買い物をする。これは今回のセッションで固める事ができた価値観です。' },
+    { name: 'Iさん（40代・女性・公務員）', image: './assets/voice-n.png',
+      comment: '自分の人生を振り返りながら、自分の生き方のキーワードが分かったので、それをお金の使い方に結びつけることができました。お金の使い方は人生に直結していると気付くことができ、自分の気持ちを深掘りすることで自分が大切にしたいことが見えてくると思います。' },
   ];
 
   stepData = [
